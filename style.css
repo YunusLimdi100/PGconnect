@@ -1,0 +1,449 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+#app {
+    height: 100%;
+}
+
+body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color: var(--fg);
+    transition: background .3s ease, color .3s ease;
+}
+
+/* ====== Theme variables (light + dark) ====== */
+:root {
+    --bg: linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
+    --card: #fff;
+    --fg: #0b1226;
+    --muted: #5b6b79;
+    --accent: #0066ff;
+    --glass: rgba(255, 255, 255, 0.7);
+    --shadow: 0 6px 18px rgba(9, 30, 66, 0.08);
+    --radius: 12px;
+}
+
+.dark {
+    --bg: linear-gradient(180deg, #0f1724 0%, #071021 100%);
+    --card: #071427;
+    --fg: #e6eef8;
+    --muted: #9fb0c7;
+    --accent: #6ea8ff;
+    --glass: rgba(10, 16, 26, 0.6);
+    --shadow: 0 10px 30px rgba(2, 6, 23, 0.7);
+}
+
+/* ====== Layout ====== */
+header {
+    position: sticky;
+    top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 20px;
+    max-width: 1200px;
+    margin: 12px auto;
+    z-index: 20;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), #00d4ff);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+button,
+.btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+}
+
+button.ghost {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: none;
+}
+
+.icon-btn {
+    background: transparent;
+    color: var(--fg);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+/* ====== Hero ====== */
+.hero {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 26px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(6px);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-inner {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.hero .left {
+    flex: 1;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p.lead {
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+/* animated background - soft moving blobs */
+.bg-blobs {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    filter: blur(48px);
+    opacity: 0.35;
+    transform: translate3d(0, 0, 0);
+}
+
+.blob.a {
+    width: 360px;
+    height: 360px;
+    left: -80px;
+    top: -40px;
+    background: radial-gradient(circle at 30% 20%, #ffd6a5, #ffb4a2);
+    animation: float 12s ease-in-out infinite;
+}
+
+.blob.b {
+    width: 420px;
+    height: 420px;
+    right: -140px;
+    bottom: -80px;
+    background: radial-gradient(circle at 60% 60%, #a0c4ff, #90e0ef);
+    animation: float 18s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* ====== Search + Filters ====== */
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    align-items: center;
+}
+
+.search {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    background: var(--card);
+    padding: 10px;
+    border-radius: 12px;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.search input {
+    border: 0;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: var(--fg);
+    font-size: 15px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+select,
+input[type=number],
+input[type=text] {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 8px 10px;
+}
+
+/* ====== Grid ====== */
+.main {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    padding: 0 16px;
+}
+
+.sidebar {
+    position: relative;
+    padding: 14px;
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.listings {
+    display: grid;
+    gap: 12px;
+}
+
+.card {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent);
+    box-shadow: var(--shadow);
+    align-items: center;
+}
+
+.card img {
+    width: 110px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.meta {
+    flex: 1;
+}
+
+.price {
+    font-weight: 700;
+}
+
+.tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: var(--glass);
+    padding: 6px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* ====== Cart modal/list ====== */
+.cart-list {
+    position: fixed;
+    right: 18px;
+    top: 80px;
+    width: 360px;
+    max-height: 70vh;
+    overflow: auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 12px;
+    z-index: 50;
+}
+
+.cart-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+}
+
+/* ====== Footer ====== */
+footer {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    color: var(--muted);
+}
+
+/* ====== Responsive ====== */
+@media (max-width:880px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding-inline: 12px;
+    }
+
+    .hero-inner {
+        flex-direction: column;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ====== Small UI niceties ====== */
+.pill {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--glass);
+    cursor: pointer;
+}
+
+.pill.active {
+    background: var(--accent);
+    color: white;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+/* ====== Animations for cards pop ====== */
+.card {
+    transform-origin: center;
+    transition: transform .18s cubic-bezier(.2, .9, .3, 1), box-shadow .18s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.01);
+}
+
+/* ====== Coupon applied badge ====== */
+.coupon-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #00c6ff, #0072ff); /* blue gradient */
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  margin-left: 6px;   /* spacing from text */
+  vertical-align: middle;
+}
+
+.hero .right button {
+  margin-top: 10px;
+}
+
+
+/* ====== Checkout modal ====== */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 80;
+}
+
+.modal {
+    width: 720px;
+    max-width: 94%;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+}
+
+.payment-method {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.payment-card {
+    flex: 1;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px dashed rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+}
+
+.payment-card.selected {
+    border-style: solid;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* tiny helpers */
+.hide {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+header .nav-actions a.btn {
+  text-decoration: none;
+}
+.footer-btn {
+  text-decoration: none;   /* removes underline */
+  display: inline-block;   /* ensures button shape */
+  margin-top: 10px;
+}
