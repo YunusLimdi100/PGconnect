@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+$_SESSION = array();
+
 session_destroy();
-header("Location: ../index.php");
+
+// Redirect to login page 
+header("Location: login.php?logout=success");
 exit();
+?>

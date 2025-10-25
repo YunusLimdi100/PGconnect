@@ -1,14 +1,17 @@
 <?php
-$host = "127.0.0.1";   // or "localhost"
-$port = 3306;          // Workbench MySQL default port
-$user = "root";        // MySQL username
-$pass = ""; // replace with your MySQL root password
-$db   = "pgconnects";   // your database
 
-$conn = mysqli_connect($host, $user, $pass, $db, $port);
+$db_host = getenv('DB_HOST') ?: 'db';
+$db_user = getenv('DB_USER') ?: 'root';
+$db_password = getenv('DB_PASSWORD') ?: 'password';
+$db_name = getenv('DB_NAME') ?: 'pgconnects';
 
+
+$conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+
+// Check connection
 if (!$conn) {
-    die("❌ Connection failed: " . mysqli_connect_error());
+    die("❌ Database connection failed: " . mysqli_connect_error());
 }
-// echo "✅ Connected successfully";  // for debugging
+
+mysqli_set_charset($conn, "utf8mb4");
 ?>

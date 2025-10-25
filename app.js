@@ -1,16 +1,4 @@
 console.log("✅ app.js loaded successfully");
-const PGs = [
-    { id: 'pg1', title: 'Sunny Stay PG - Single Room', city: 'Bengaluru', price: 6500, rating: 4.6, discount: 10, type: 'single', amenities: ['wifi', 'attached', 'security'], img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=60', femaleOnly: true, vegOnly: true },
-    { id: 'pg2', title: 'Comfy Shared PG - 3 Sharing', city: 'Hyderabad', price: 3500, rating: 4.1, discount: 0, type: 'sharing', amenities: ['wifi', 'ac'], img: 'pgs/p5.jpeg', femaleOnly: false, vegOnly: true },
-    { id: 'pg3', title: 'Elite Rooms PG - Near College', city: 'Delhi', price: 8800, rating: 4.8, discount: 15, type: 'single', amenities: ['wifi', 'attached', 'ac'], img: 'pgs/pg1.jpeg', femaleOnly: false, vegOnly: false },
-    { id: 'pg4', title: 'Budget Stay - Sharing', city: 'Mumbai', price: 3000, rating: 3.9, discount: 5, type: 'sharing', amenities: ['wifi'], img: 'pgs/p7.jpeg', femaleOnly: false, vegOnly: true },
-    { id: 'pg5', title: 'College Corner PG - AC Rooms', city: 'Kolkata', price: 7200, rating: 4.3, discount: 12, type: 'single', amenities: ['ac', 'attached', 'wifi'], img: 'pgs/p4.jpeg', femaleOnly: true, vegOnly: false },
-    { id: 'pg6', title: 'City Hub PG - Economy', city: 'Bengaluru', price: 4200, rating: 4.0, discount: 8, type: 'sharing', amenities: ['wifi', 'security'], img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=60', femaleOnly: false, vegOnly: false },
-    { id: 'pg7', title: 'Green Leaf PG - Single', city: 'Pune', price: 5800, rating: 4.4, discount: 5, type: 'single', amenities: ['attached', 'security'], img: 'pgs/p3.jpeg', femaleOnly: true, vegOnly: true },
-    { id: 'pg8', title: 'Metro Stay - Short Distance', city: 'Chennai', price: 4900, rating: 4.2, discount: 0, type: 'sharing', amenities: ['wifi', 'ac'], img: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=60', femaleOnly: false, vegOnly: false },
-    { id: 'pg9', title: 'Comfort Plus PG', city: 'Jaipur', price: 6300, rating: 4.5, discount: 10, type: 'single', amenities: ['ac', 'wifi', 'attached'], img: 'pgs/p2.jpeg', femaleOnly: false, vegOnly: true },
-    { id: 'pg10', title: 'Neighborhood PG - Family Run', city: 'Lucknow', price: 5200, rating: 4.0, discount: 7, type: 'sharing', amenities: ['security', 'attached'], img: 'pgs/p6.jpeg', femaleOnly: false, vegOnly: false }
-];
 
 // State
 let state = {
